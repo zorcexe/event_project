@@ -2,4 +2,7 @@
 
 ## Installationshinweise
 
-    git pull 
+    uv sync 
+
+    cd event_manager
+    uv run manage.py runserver
