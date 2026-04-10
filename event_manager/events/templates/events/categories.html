@@ -1,20 +1,28 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Seite</title>
-</head>
-<body>
-    <h1>Übersicht aller Kategorien</h1>
-    <ul>
-    {% for category in categories %}
-        <li>
-            <a href="{% url 'events:category-detail' category.pk %}">
-            {{category}}
-            </a>
-        </li>
-    {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "base.html" %}
+
+
+{% block head %}
+<h1 class="display-6 fw-bold lh-1">Kategorien</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="col-lg-8 col-sm-12">
+
+<p><a href="{% url 'events:category-create' %}">neue Kategorie eintragen</a></p>
+
+<ul class="list-group event_box">
+{% for cat in categories %}
+<a href="{% url 'events:category-detail' cat.pk %}">
+<li class="list-group-item rounded">
+    {{cat.name}}
+    <span class="badge rounded-pill bg-primary">{{cat.events.count}}</span>
+</li>
+</a>
+{% endfor %}
+
+</ul>
+</div>
+</div>
+
+{% endblock %}

@@ -37,8 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "crispy_bootstrap5",
+    "crispy_forms",
     "events",  # << Events-App
 ]
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -50,12 +55,25 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+if DEBUG:
+    # im DEBUG modus registrieren wir die DEBUG Toolbar
+    MIDDLEWARE.extend(["debug_toolbar.middleware.DebugToolbarMiddleware"])
+
+    INSTALLED_APPS.extend(["debug_toolbar"])
+
+    DEBUG_TOOLBAR_CONFIG = {
+        "INTERCEPT_REDIRECTS": False,
+    }
+
+    INTERNAL_IPS = ("127.0.0.1",)
+
+
 ROOT_URLCONF = "event_manager.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "event_manager/templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

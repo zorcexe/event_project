@@ -1,8 +1,54 @@
 # events/views.py
-from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 
 from .models import Category, Event
+from .forms import CategoryForm
+
+
+class EventListView(ListView):
+    """Liste aller Events.
+
+    /events
+    Template: events/event_list.html
+    Zugriff im Template auf das QS: object_list
+    qs = Event.objects.all()
+    """
+
+    model = Event
+    # category => Name im Event-Model (select_related macht Inner join auf category)
+    # https://docs.djangoproject.com/en/6.0/ref/models/querysets/#select-related
+    queryset = Event.objects.select_related("category")
+
+
+def category_create(request):
+    """Eine neue Kategorie anlegen.
+
+    GET: leeres Formular anzeigen
+    POST: Formulardaten in DB eintragen und neue
+    Kategorie erstellen (wenn valide)
+
+    events/categories/create
+    """
+    if request.method == "POST":
+        # Formular mit eingehenden Daten
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            category = form.save()  # model.save()
+            # weiterleitung auf Übersicht der Kategorien
+            # return redirect("events:categories")
+            # Weiterleiten auf neue kategorie
+            return redirect("events:category-detail", pk=category.pk)
+    else:
+        # ein leeres Formular erstellen:
+        form = CategoryForm()
+
+    return render(
+        request,
+        "events/category_form.html",
+        {"form": form},
+    )
 
 
 def category_detail(request, pk: int):
@@ -13,6 +59,7 @@ def category_detail(request, pk: int):
     # category = Category.objects.get(pk=pk)
     # Hole Objekt oder löse 404 Fehler aus
     category = get_object_or_404(Category, pk=pk)
+    # category.events.count()
     return render(
         request,
         "events/category_detail.html",

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Neue Kategorie anlegen
+{% endblock %}
+
+{% block head %}
+Neue Kategorie anlegen
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-7">
+            <form method="POST">
+            {% csrf_token %} <!-- erzeugt ein hidden field mit einmal-token -->
+            {{form|crispy}}
+            <input type="submit" value="Absenden" />
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

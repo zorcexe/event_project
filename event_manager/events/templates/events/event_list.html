@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Event Übersicht
+{% endblock %}
+
+{% block head%}
+<h1 class="display-6 fw-bold lh-1">Übersicht der Events</h1>
+
+<p>Tolle Events in deiner Nähe</p>
+{% endblock %}
+
+{% block content %}
+
+<ul class="list-group event_box">
+{% for event in object_list %}
+    <a href="">
+    <li class="list-group-item rounded">
+        <small><span>am {{event.date}}</span></small><br>
+        <b>{{event.name}}</b>
+            <span class="badge rounded-pill bg-primary">
+                {{event.category.name}}
+            </span>     
+    </li>
+    </a>
+{% endfor%}
+</ul>
+{% endblock %}

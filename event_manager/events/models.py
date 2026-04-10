@@ -23,6 +23,10 @@ class Category(models.Model):
         """String-Repräsentation eines Kategorie-Objekts, zb. in Admin"""
         return self.name
 
+    def save(self):
+        print("mach was")
+        return super().save()
+
 
 class Event(models.Model):
     """Ein Ereignis in der Zukunft."""

@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{category}}</title>
-</head>
-<body>
-    <h1>{{category}}</h1>
-    <p>{{category.sub_title}}</p>
-    <p>{{category.description}}</p>
-</body>
-</html>
+{% extends "base.html" %}
 
+{% block title %}
+{{category}}
+{% endblock %}
+
+{% block head %}
+{{category}}
+{% endblock %}
+
+{% block content %}
+<p>
+<a href="{% url 'events:categories' %}">Zurück zur Übersicht der Kategorien</a>
+</p>
+<p>{{category.sub_title}}</p>
+<p>{{category.description}}</p>
+{% endblock %}
