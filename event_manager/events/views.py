@@ -22,6 +22,28 @@ class EventListView(ListView):
     queryset = Event.objects.select_related("category")
 
 
+def category_update(request, pk: int):
+    """Editieren eine Kategorie.
+
+    events/categories/3/update
+    GET: Formular mit Daten aus der DB befüllen
+    POST: Formular mit Daten aus Form überschreiben und
+    Kategorie speichern (wenn valide)
+    """
+    category_instance = get_object_or_404(Category, pk=pk)
+    form = CategoryForm(request.POST or None, instance=category_instance)
+    # wenn es per POST abgesendet wurde und valide ist, dann:
+    if form.is_valid():
+        category = form.save()
+        return redirect("events:category-detail", pk=category.pk)
+
+    return render(
+        request,
+        "events/category_form.html",
+        {"form": form},
+    )
+
+
 def category_create(request):
     """Eine neue Kategorie anlegen.
 

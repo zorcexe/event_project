@@ -2,25 +2,36 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-Neue Kategorie anlegen
+
+    {% if form.instance.pk %}
+        Kategorie editieren
+    {% else %}
+        Neue Kategorie anlegen
+    {% endif %}
+
 {% endblock %}
 
 {% block head %}
-Neue Kategorie anlegen
+<h1>
+    {% if form.instance.pk %}
+        Kategorie editieren
+    {% else %}
+        Neue Kategorie anlegen
+    {% endif %}
+</h1>
 {% endblock %}
 
 {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                <form method="POST">
+                {% csrf_token %} <!-- erzeugt ein hidden field mit einmal-token -->
+                {{form|crispy}}
+                <input type="submit" value="Absenden" />
+                </form>
 
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-lg-7">
-            <form method="POST">
-            {% csrf_token %} <!-- erzeugt ein hidden field mit einmal-token -->
-            {{form|crispy}}
-            <input type="submit" value="Absenden" />
-            </form>
-
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}

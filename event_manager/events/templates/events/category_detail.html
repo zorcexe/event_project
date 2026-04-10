@@ -12,6 +12,11 @@
 <p>
 <a href="{% url 'events:categories' %}">Zurück zur Übersicht der Kategorien</a>
 </p>
+<p>
+    <a href="{% url 'events:category-update' category.pk %}">
+        Kategorie editieren
+    </a>
+</p>
 <p>{{category.sub_title}}</p>
 <p>{{category.description}}</p>
 {% endblock %}
