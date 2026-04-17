@@ -9,6 +9,8 @@ dependencies = [
     "django==5.2",
     "django-crispy-forms>=2.6",
     "django-stubs[compatible-mypy]>=6.0.2",
+    "djangorestframework>=3.17.1",
+    "pre-commit>=4.5.1",
 ]
 
 [dependency-groups]

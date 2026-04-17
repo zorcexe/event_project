@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block header %}
+Übersicht der Verkäufe
+{% endblock %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>Company</th>
+        <th>Produkt</th>
+        <th>Anzahl</th>
+        <th>Preis</th>
+        <th>Datum</th>
+    </tr>
+    <tr>
+        {% for sale in sales_list %}
+        <td>{{ sale.company }}</td>
+        <td>{{ sale.product_name }}</td>
+        <td>{{ sale.quantity }}</td>
+        <td>{{ sale.price_per_unit }}</td>
+        <td>{{ sale.sold_at }}</td>
+    </tr>
+        {% endfor %}
+</table>
+
+{% endblock %}

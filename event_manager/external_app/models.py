@@ -25,6 +25,9 @@ class Company(models.Model):
         managed = False
         db_table = "company"
 
+    def __str__(self):
+        return self.name
+
 
 class Sales(models.Model):
     company = models.ForeignKey(

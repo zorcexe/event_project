@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block header %}
+Übersicht der Verkäufe (grupppiert nach Produkt)
+{% endblock %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>Produkt</th>
+        <th>Anzahl</th>
+        <th>Gesamtpreis</th>
+    </tr>
+    <tr>
+        {% for sale in sales_list %}
+        <td>{{ sale.product_name }}</td>
+        <td>{{ sale.total_quantity }}</td>
+        <td>{{ sale.total_price|floatformat:2 }}</td>
+    </tr>
+        {% endfor %}
+</table>
+
+{% endblock %}

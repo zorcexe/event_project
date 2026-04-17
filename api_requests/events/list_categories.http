@@ -1,0 +1,2 @@
+### Liste von Kategorien (wegen donedb REST API Client
+GET http://127.0.0.1:8000/api/events/categories

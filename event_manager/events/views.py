@@ -112,7 +112,9 @@ def categories(request):
 
     events/categories
     """
-    qs = Category.objects.all()
+    # prefetch_related für Optimierung von reverse-
+    # Beziehungen (via related name "events")
+    qs = Category.objects.prefetch_related("events")
     context = {"categories": qs}
 
     return render(

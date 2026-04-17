@@ -4,18 +4,18 @@
 ## Installationshinweise
 
     cd event_project
-    uv sync 
+    uv sync
 
     cd event_manager
     uv run manage.py runserver
 
 
 
-## Aufgabe
-- Create: Views, Form, Urls, Template für Lieferaddressen / Notiz erstellen.
-- 
-- optional:
-- Crispy Forms nutzen (geht aber nur, wenn bootstrap base.html eingebunden ist)
-django-crispy-forms
-crispy-bootstrap5
+## API
 
+Alle Anfragen liegen in api_requests/ als http-Dateien
+
+## Aufgabe
+- Alle Sales aus der Legacy-Datebank in einer Tabelle auflisten
+- Der http://127.0.0.1:8000/external/sales
+- URL, View, Template

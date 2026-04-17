@@ -92,7 +92,7 @@ Direktes Arbeiten auf `main` ist problematisch, weil dort idealerweise nur gepr�
 Arbeiten Sie deshalb **niemals direkt auf `main`**.
 
 ```bash
-git checkout -b feature/mein-feature
+git checkout -b feature/feature1
 ```
 
 Mit diesem Befehl wird ein neuer Branch erstellt und sofort aktiviert. Ab diesem Zeitpunkt erfolgen Ihre Änderungen in diesem Branch.
@@ -165,6 +165,19 @@ Die drei Befehle haben dabei folgende Funktion:
 Achten Sie darauf, sinnvolle Commit-Nachrichten zu verwenden.
 Eine gute Nachricht beschreibt knapp und konkret, was geändert wurde.
 
+Nachdem der Feature akzeptiert und gemerged wurde, kann der Feature-Branch gelöscht werden
+
+a) Remote Branch löschen
+
+```bash
+git push origin --delete feature/feature1
+```
+
+b) Lokalen Branch löschen (erzwingen)
+
+```bash
+git branch -D feature/feature1
+```
 ---
 
 ### 5.6 Pull Request erstellen
@@ -327,6 +340,3 @@ Der Maintainer prüft anschließend die Änderungen und entscheidet über die In
 * Prüfung durch den Maintainer
 * ggf. Rückfragen oder Anpassungen
 * Integration in das Hauptprojekt
-
-
-

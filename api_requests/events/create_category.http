@@ -1,0 +1,9 @@
+### Kategorie anlegen (Body muss eine Zeile Abstand zum Header haben)
+POST http://127.0.0.1:8000/api/events/categories
+Content-Type: application/json
+
+{
+    "name": "Super Kategorie",
+    "sub_title": "Tolle Katgorie",
+    "description": "Eine Beschreibung"
+}
