@@ -24,4 +24,6 @@ class EventForm(forms.ModelForm):
 
         labels = {
             "sub_title": "Genre",
+            "date": "Termin am",
+            "description": "Infos",
         }
