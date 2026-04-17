@@ -1,6 +1,7 @@
 # events/urls.py (URLs der Event-App)
 from django.urls import path
 from .views import (
+    say_hello,
     categories,
     category_detail,
     category_update,
@@ -47,4 +48,9 @@ urlpatterns = [
         EventCreateView.as_view(),
         name="event-create",
     ),
+    path(
+        "hello",
+        say_hello,
+        name="hello"
+    )
 ]

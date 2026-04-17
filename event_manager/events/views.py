@@ -159,3 +159,7 @@ def qs_test(request):
     print("SQL:", str(categories_mit_s.query))
 
     return HttpResponse("-".join(map(str, qs)))
+
+
+def say_hello(request):
+    return HttpResponse("Hello")
