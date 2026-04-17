@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block header %}
+Übersicht der Firmen
+{% endblock %}
+
+{% block content %}
+
+<table>
+<tr>
+<th>Name</th>
+<th>Stadt</th>
+<th>Anzahl Verkäufe</th>
+</tr>
+
+{% for company in company_list %}
+    <tr>
+        <td>{{ company.name }}</td>
+        <td>{{ company.city }}</td>
+        <td>{{ company.sales.count }}</td>
+    </tr>
+{% endfor %}
+
+
+</table>
+
+{% endblock %}

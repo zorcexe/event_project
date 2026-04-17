@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "crispy_bootstrap5",
     "crispy_forms",
+    "rest_framework",
     "events",
     "pages",
+    "external_app",  # << App für Abfragen auf einer externen DB (siehe DATABASES)
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -96,9 +98,14 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
-    }
+    },
+    "external": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "external_data_neu.sqlite3",
+    },
 }
 
+DATABASE_ROUTERS = ["event_manager.db_router.ExternalReadOnlyRouter"]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
